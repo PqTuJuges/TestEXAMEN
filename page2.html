@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fondamentaux du Web – Timeline • URL (visuel) • Domaines • Standards • Sécurité</title>
+  <style>
+    :root{
+      --bg:#0b1020;--panel:#121a33;--soft:#1b2547;--text:#e9eefc;--muted:#b9c3e6;--accent:#7aa2ff;--accent-2:#35d0a7;--warn:#ffb454;--danger:#ff6b6b;--ok:#7bd88f;--code:#0e152b;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:linear-gradient(180deg,#0b1020 0%,#0f1830 100%);color:var(--text)}
+    a{color:var(--accent)}
+    header{position:sticky;top:0;z-index:10;background:rgba(11,16,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid #1f2a4d}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    .title{display:flex;gap:12px;align-items:center}
+    .title h1{margin:0;font-size:clamp(22px,3.5vw,34px)}
+    nav{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+    nav a{padding:8px 12px;border:1px solid #26335f;border-radius:999px;text-decoration:none;color:var(--muted)}
+    nav a:hover{border-color:var(--accent);color:var(--text)}
+
+    section{scroll-margin-top:96px}
+    .section{padding:56px 0;border-top:1px solid #1f2a4d}
+    .section h2{margin:0 0 16px;font-size:clamp(20px,3vw,28px)}
+    .section p.lead{color:var(--muted);margin-top:0}
+
+    .grid{display:grid;gap:16px}
+    .g-2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .g-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .card{background:linear-gradient(180deg,var(--panel),var(--soft));border:1px solid #24315a;border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:4px 10px;border:1px solid #2a3a6b;border-radius:999px;color:var(--muted);font-size:12px}
+
+    /* Timeline */
+    .timeline{position:relative}
+    .timeline::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:2px;background:#26335f}
+    .event{position:relative;padding-left:36px}
+    .event::before{content:"";position:absolute;left:6px;top:10px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(122,162,255,.15)}
+    .event h3{margin:0 0 6px;font-size:16px}
+    .event .year{font-weight:700;color:var(--accent-2);margin-right:8px}
+
+    /* Visual URL explainer */
+    .url-lab{display:grid;gap:16px}
+    .url-inputs{display:flex;gap:10px}
+    .url-inputs input{flex:1;padding:12px 14px;border-radius:12px;border:1px solid #2a3a6b;background:#0d1430;color:var(--text)}
+
+    .url-map{display:grid;grid-template-columns:repeat(12,1fr);gap:8px}
+    .tag{padding:10px 12px;border:1px solid #2a3a6b;border-radius:10px;background:#0e1736;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .tag[data-key]{cursor:pointer}
+    .tag.active{outline:2px solid var(--accent);box-shadow:0 0 0 6px rgba(122,162,255,.15)}
+
+    .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+    .legend .item{display:flex;gap:10px;align-items:flex-start}
+    .dot{width:12px;height:12px;border-radius:50%;margin-top:6px;background:#2a3a6b}
+    .legend .item[data-key].active .dot{background:var(--accent)}
+    .muted{color:var(--muted)}
+
+    /* Tables */
+    table{width:100%;border-collapse:separate;border-spacing:0 8px}
+    th,td{text-align:left;padding:12px 14px}
+    thead th{color:#c5d2ff;font-weight:600}
+    tbody tr{background:linear-gradient(180deg,var(--panel),var(--soft));border:1px solid #23305a}
+    tbody tr td{border-top:1px solid #23305a;border-bottom:1px solid #23305a}
+    tbody tr td:first-child{border-left:1px solid #23305a;border-top-left-radius:12px;border-bottom-left-radius:12px}
+    tbody tr td:last-child{border-right:1px solid #23305a;border-top-right-radius:12px;border-bottom-right-radius:12px}
+
+    footer{border-top:1px solid #1f2a4d;margin-top:48px}
+    .small{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2l2.39 4.84L20 8l-4 3.89.95 5.54L12 15.77 7.05 17.43 8 11.89 4 8l5.61-1.16L12 2z" stroke="#7aa2ff"/></svg>
+        <h1>Fondamentaux du Web</h1>
+      </div>
+      <nav>
+        <a href="#timeline">Timeline</a>
+        <a href="#url">URL (visuel)</a>
+        <a href="#domains">Noms de domaine & DNS</a>
+        <a href="#standards">Standards du Web</a>
+        <a href="#security">Sécurité</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Timeline du Web (identique à v1) -->
+    <section id="timeline" class="section">
+      <h2>Timeline du Web</h2>
+      <p class="lead">Grandes étapes, technologies/standards, nouveaux services – avec une phrase d’impact par jalon.</p>
+      <div class="grid timeline">
+        <div class="card event"><h3><span class="year">1989–1991</span>Naissance du Web</h3><p><strong>Tim Berners‑Lee</strong> (CERN) propose le WWW, premier site en 1991. <em>Impact :</em> hypertexte mondial ouvert.</p></div>
+        <div class="card event"><h3><span class="year">1993</span> Navigateurs graphiques</h3><p><strong>Mosaic</strong> popularise la navigation visuelle. <em>Impact :</em> adoption de masse.</p></div>
+        <div class="card event"><h3><span class="year">1994</span> W3C</h3><p>Création du <strong>W3C</strong> pour standardiser. <em>Impact :</em> interopérabilité.</p></div>
+        <div class="card event"><h3><span class="year">1995</span> JavaScript</h3><p><strong>JavaScript</strong> apporte le dynamisme côté client. <em>Impact :</em> pages interactives.</p></div>
+        <div class="card event"><h3><span class="year">1996–1998</span> CSS & DOM</h3><p><strong>CSS1/2</strong>, <strong>DOM</strong>. <em>Impact :</em> séparation contenu/pré‑sentation.</p></div>
+        <div class="card event"><h3><span class="year">2004–2006</span> Web 2.0 & Ajax</h3><p>Wikipedia, YouTube; <strong>Ajax</strong>. <em>Impact :</em> apps web riches.</p></div>
+        <div class="card event"><h3><span class="year">2008–2014</span> HTML5</h3><p>Vidéo, canvas, API. <em>Impact :</em> applications natives du Web.</p></div>
+        <div class="card event"><h3><span class="year">2015</span> HTTP/2</h3><p>Binaire, multiplexé. <em>Impact :</em> chargements plus rapides.</p></div>
+        <div class="card event"><h3><span class="year">2016</span> HTTPS massif</h3><p><strong>Let’s Encrypt</strong>. <em>Impact :</em> chiffrement par défaut.</p></div>
+        <div class="card event"><h3><span class="year">2019–2022</span> HTTP/3 (QUIC)</h3><p>Transport sur QUIC/UDP. <em>Impact :</em> latence réduite.</p></div>
+        <div class="card event"><h3><span class="year">2020–2024</span> WebAuthn & Passkeys</h3><p>Sans mot de passe. <em>Impact :</em> sécurité + UX.</p></div>
+      </div>
+    </section>
+
+    <!-- URL – EXPLICATION VISUELLE -->
+    <section id="url" class="section">
+      <h2>URL : explication visuelle</h2>
+      <p class="lead">Surlignez une partie de l’URL pour voir sa définition.</p>
+
+      <div class="card url-lab">
+        <div class="url-inputs">
+          <input id="urlInput" value="https://alice:secret@example.com:8080/produits/42?tri=prix&desc=true#avis" />
+        </div>
+
+        <!-- Bandeau découpé visuellement -->
+        <div id="urlMap" class="url-map">
+          <div class="tag" style="grid-column:1/span 2" data-key="scheme">https://</div>
+          <div class="tag" style="grid-column:3/span 2" data-key="userinfo">alice:secret@</div>
+          <div class="tag" style="grid-column:5/span 3" data-key="host">example.com</div>
+          <div class="tag" style="grid-column:8/span 1" data-key="port">:8080</div>
+          <div class="tag" style="grid-column:9/span 2" data-key="path">/produits/42</div>
+          <div class="tag" style="grid-column:11/span 1" data-key="query">?tri=prix&desc=true</div>
+          <div class="tag" style="grid-column:12/span 1" data-key="fragment">#avis</div>
+        </div>
+
+        <!-- Légende détaillée -->
+        <div class="legend" id="legend">
+          <div class="item" data-key="scheme"><div class="dot"></div><div><strong>Schéma</strong> : protocole de l’URL (ex : <code>http</code>, <code>https</code>, <code>ftp</code>, <code>mailto</code>). Indique comment contacter la ressource.</div></div>
+          <div class="item" data-key="userinfo"><div class="dot"></div><div><strong>Infos utilisateur</strong> (optionnel) : <code>utilisateur:motdepasse@</code>. À éviter dans les liens publics.</div></div>
+          <div class="item" data-key="host"><div class="dot"></div><div><strong>Hôte</strong> : nom de domaine ou adresse IP qui héberge la ressource (<code>example.com</code>).</div></div>
+          <div class="item" data-key="port"><div class="dot"></div><div><strong>Port</strong> : porte d’entrée réseau (défaut <code>80</code> pour HTTP, <code>443</code> pour HTTPS).</div></div>
+          <div class="item" data-key="path"><div class="dot"></div><div><strong>Chemin</strong> : emplacement de la ressource sur le serveur (<code>/produits/42</code>).</div></div>
+          <div class="item" data-key="query"><div class="dot"></div><div><strong>Paramètres</strong> : paires <code>clé=valeur</code> envoyées au serveur (ex : <code>tri=prix</code>).</div></div>
+          <div class="item" data-key="fragment"><div class="dot"></div><div><strong>Fragment</strong> : ancre côté client (<code>#avis</code>) ; jamais transmise au serveur.</div></div>
+          <p class="muted">Astuce : les paramètres sont encodés (espaces → <code>%20</code> ou <code>+</code>), et l’ordre peut avoir un impact côté serveur.</p>
+        </div>
+      </div>
+
+      <div class="grid g-2" style="margin-top:16px">
+        <div class="card">
+          <h3 style="margin-top:0">Statuts HTTP & redirections (rappel)</h3>
+          <table>
+            <thead><tr><th>Code</th><th>Nom</th><th>Quand l’utiliser</th></tr></thead>
+            <tbody>
+              <tr><td>200</td><td>OK</td><td>Requête réussie.</td></tr>
+              <tr><td>201</td><td>Created</td><td>Ressource créée (POST).</td></tr>
+              <tr><td>301</td><td>Moved Permanently</td><td>Changement d’URL définitif (SEO met à jour).</td></tr>
+              <tr><td>302</td><td>Found</td><td>Déplacement temporaire (ne pas changer les liens).</td></tr>
+              <tr><td>303</td><td>See Other</td><td>Après POST, rediriger vers une page GET.</td></tr>
+              <tr><td>307</td><td>Temporary Redirect</td><td>Redirection temporaire sans changer la méthode.</td></tr>
+              <tr><td>308</td><td>Permanent Redirect</td><td>Permanent, conserve la méthode.</td></tr>
+              <tr><td>404</td><td>Not Found</td><td>Ressource manquante.</td></tr>
+              <tr><td>429</td><td>Too Many Requests</td><td>Trop de requêtes ; limiter (rate‑limit).</td></tr>
+              <tr><td>500</td><td>Server Error</td><td>Erreur côté serveur.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Exemple de transformation 301 → 200</h3>
+          <pre><code>GET /ancienne-url  → 301 Location: /nouvelle-url
+GET /nouvelle-url  → 200 OK (contenu)</code></pre>
+          <p class="muted">Une 301 doit être conservée suffisamment longtemps pour que moteurs et navigateurs mettent à jour leurs caches.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAINES & DNS – Termes expliqués clairement -->
+    <section id="domains" class="section">
+      <h2>Noms de domaine : termes clés expliqués</h2>
+      <p class="lead">Qui fait quoi ? Qu’est‑ce que TLD, sous‑domaine, zone, TTL, etc. ?</p>
+
+      <div class="grid g-2">
+        <div class="card">
+          <h3 style="margin-top:0">Vocabulaire de base</h3>
+          <table>
+            <thead><tr><th>Terme</th><th>Définition claire</th></tr></thead>
+            <tbody>
+              <tr><td><strong>TLD</strong></td><td>Extension finale du domaine (ex : <code>.com</code>, <code>.be</code>).</td></tr>
+              <tr><td><strong>SLD</strong></td><td>Deuxième niveau, juste avant le TLD (ex : <code>exemple</code> dans <code>exemple.com</code>).</td></tr>
+              <tr><td><strong>Sous‑domaine</strong></td><td>Préfixe ajouté (ex : <code>www</code> ou <code>blog</code> → <code>blog.exemple.com</code>).</td></tr>
+              <tr><td><strong>Registrant</strong></td><td>Titulaire du domaine (vous/organisation).</td></tr>
+              <tr><td><strong>Registrar</strong></td><td>Revendeur accrédité qui enregistre pour vous (OVHcloud, Gandi…).</td></tr>
+              <tr><td><strong>Registry</strong></td><td>Opérateur du TLD (Verisign pour .com, DNS Belgium pour .be).</td></tr>
+              <tr><td><strong>WHOIS</strong></td><td>Service qui publie les infos d’enregistrement (souvent protégées par privacy).</td></tr>
+              <tr><td><strong>DNS</strong></td><td>Annuaire qui traduit les noms en adresses IP.</td></tr>
+              <tr><td><strong>Résolveur</strong></td><td>Serveur intermédiaire (souvent votre FAI ou 1.1.1.1) qui pose les questions DNS.</td></tr>
+              <tr><td><strong>Autoritatif</strong></td><td>Serveur DNS « source de vérité » pour votre zone.</td></tr>
+              <tr><td><strong>Zone DNS</strong></td><td>Fichier qui contient les enregistrements pour un domaine.</td></tr>
+              <tr><td><strong>TTL</strong></td><td>Durée de vie en cache d’un enregistrement (propagation).</td></tr>
+              <tr><td><strong>Glue record</strong></td><td>Enregistrement A/AAAA spécial nécessaire si vos NS sont dans votre propre domaine.</td></tr>
+              <tr><td><strong>EPP</strong></td><td>Protocole utilisé entre registrars et registries pour gérer les domaines.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Cycle de vie d’un domaine</h3>
+          <ol>
+            <li><strong>Recherche</strong> : vérifier la disponibilité.</li>
+            <li><strong>Enregistrement</strong> (1–10 ans) via un registrar.</li>
+            <li><strong>Utilisation</strong> : configurer DNS (A/AAAA, CNAME, MX…).</li>
+            <li><strong>Expiration</strong> : si non renouvelé.</li>
+            <li><strong>Période de grâce</strong> : rattrapage possible.</li>
+            <li><strong>Redemption</strong> : récupération plus coûteuse.</li>
+            <li><strong>Suppression</strong> : retour dans le pool public.</li>
+          </ol>
+          <p class="muted">Les durées exactes varient selon le TLD.</p>
+        </div>
+      </div>
+
+      <div class="grid g-2" style="margin-top:16px">
+        <div class="card">
+          <h3 style="margin-top:0">Enregistrements courants</h3>
+          <ul class="grid g-3" style="margin-top:6px">
+            <li><strong>A/AAAA</strong> : IPv4/IPv6</li>
+            <li><strong>CNAME</strong> : alias</li>
+            <li><strong>MX</strong> : messagerie</li>
+            <li><strong>NS</strong> : serveurs de noms</li>
+            <li><strong>TXT</strong> : SPF/DKIM/DMARC, vérifications</li>
+            <li><strong>SRV</strong> : services (SIP, etc.)</li>
+          </ul>
+          <pre><code>; Extrait de zone
+@   3600 IN A     203.0.113.10
+www 3600 IN CNAME @
+@   3600 IN MX 10 mail.exemple.com.
+@   3600 IN TXT   "v=spf1 include:mail.exemple.com -all"</code></pre>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Qui fait quoi ?</h3>
+          <ul>
+            <li><strong>ICANN</strong> : gouvernance globale du système de noms.</li>
+            <li><strong>Registry</strong> : gère un TLD (base centrale).</li>
+            <li><strong>Registrar</strong> : interface commerciale/technique pour enregistrer.</li>
+            <li><strong>Registrant</strong> : titulaire qui choisit et gère le domaine.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- STANDARDS – Explication plus précise -->
+    <section id="standards" class="section">
+      <h2>Standards du Web : à quoi ça sert concrètement ?</h2>
+      <p class="lead">Un standard = une spécification publique que tout le monde suit pour garantir que le même code fonctionne partout.</p>
+
+      <div class="grid g-2">
+        <div class="card">
+          <h3 style="margin-top:0">Organismes & domaines</h3>
+          <ul>
+            <li><strong>W3C</strong> : HTML, CSS, ARIA, Web IDL, WebAuthn (co‑publié), APIs Web.</li>
+            <li><strong>WHATWG</strong> : <em>HTML Living Standard</em>, DOM « vivant » (évolue en continu).</li>
+            <li><strong>IETF</strong> : HTTP/1.1‑2‑3, TLS, QUIC, URI/URL, DNS — protocole réseau.</li>
+            <li><strong>ECMA TC39</strong> : JavaScript (ECMAScript — ES6+).</li>
+            <li><strong>Unicode Consortium</strong> : jeu de caractères universel (émojis compris).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Pourquoi c’est indispensable</h3>
+          <ul>
+            <li><strong>Interopérabilité</strong> : un site fonctionne pareil sur Chrome, Firefox, Safari.</li>
+            <li><strong>Compatibilité</strong> : nouvelles versions sans casser l’ancien (backward‑compat).</li>
+            <li><strong>Accessibilité</strong> : ARIA/WCAG pour les lecteurs d’écran et le clavier.</li>
+            <li><strong>Performance & sécurité</strong> : HTTP/2/3, CSP, CORS, SRI définis précisément.</li>
+            <li><strong>Vie du Web</strong> : comment une idée devient API : <em>proposition → expérimentation → normalisation → implémentations → tests</em>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid g-2" style="margin-top:16px">
+        <div class="card">
+          <h3 style="margin-top:0">Cycle type d’une API Web</h3>
+          <ol>
+            <li><strong>Proposition</strong> (draft, explainer).</li>
+            <li><strong>Expérimentation</strong> (flags, origin trials).</li>
+            <li><strong>Normalisation</strong> (W3C/WHATWG : tests, interoperabilité).</li>
+            <li><strong>Implémentations</strong> dans les navigateurs.</li>
+            <li><strong>Tests de conformité</strong> (web‑platform‑tests).</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Exemples concrets</h3>
+          <ul>
+            <li><strong>Flexbox/Grid</strong> (W3C CSS) : mêmes mises en page partout.</li>
+            <li><strong>Fetch</strong> (WHATWG) : même API réseau dans tous les navigateurs.</li>
+            <li><strong>HTTP/3</strong> (IETF) : latence réduite, meilleure reprise de connexion.</li>
+            <li><strong>ECMAScript modules</strong> (TC39) : import/export de JS standardisés.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SÉCURITÉ (conserve le panorama sans checklist) -->
+    <section id="security" class="section">
+      <h2>Sécurité : attaques courantes & bonnes pratiques</h2>
+      <p class="lead">Panorama des risques et défenses côté client et côté serveur.</p>
+
+      <div class="grid g-2">
+        <div class="card">
+          <h3 style="margin-top:0">Menaces fréquentes</h3>
+          <ul>
+            <li><strong>Phishing</strong> : usurpation d’identité pour voler des identifiants.</li>
+            <li><strong>Malware</strong> : scripts/chargements malveillants (drive‑by, supply chain).</li>
+            <li><strong>Brute force</strong> : tests massifs de mots de passe.</li>
+            <li><strong>Injection</strong> : SQL/NoSQL/LDAP/Commande.</li>
+            <li><strong>XSS</strong> : script injecté côté client.</li>
+            <li><strong>CSRF</strong> : actions non désirées via session active.</li>
+            <li><strong>Scraping vs abus</strong> : collecte légitime vs extraction massive/DDoS applicatif.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Bonnes pratiques essentielles</h3>
+          <ul>
+            <li><strong>HTTPS partout</strong> (HSTS), certificats à jour.</li>
+            <li><strong>Authentification forte</strong> : MFA, WebAuthn/Passkeys.</li>
+            <li><strong>Validation/échappement</strong> des entrées, requêtes préparées.</li>
+            <li><strong>Politiques navigateur</strong> : CSP, SRI, SameSite, CORS.</li>
+            <li><strong>Durcissement</strong> : en‑têtes de sécurité, rate‑limit, CAPTCHA adaptatif.</li>
+            <li><strong>Journalisation & alertes</strong> : détection d’anomalies, WAF/CDN.</li>
+            <li><strong>Backups & plan d’incident</strong> : restauration testée régulièrement.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="section">
+      <div class="small">Version pédagogique v2 (explications visuelles + glossaire). Dernière mise à jour : <span id="updated"></span>.</div>
+    </footer>
+  </main>
+
+  <script>
+    // Date de build
+    document.getElementById('updated').textContent = new Date().toLocaleDateString('fr-BE', {year:'numeric', month:'long', day:'numeric'});
+
+    // URL visual highlighter
+    const map = document.getElementById('urlMap');
+    const legend = document.getElementById('legend');
+
+    function setActive(key){
+      map.querySelectorAll('.tag').forEach(el=>el.classList.toggle('active', el.dataset.key===key));
+      legend.querySelectorAll('.item').forEach(el=>el.classList.toggle('active', el.dataset.key===key));
+    }
+
+    map.addEventListener('mouseover', e=>{
+      const key = e.target.dataset && e.target.dataset.key; if(key) setActive(key);
+    });
+    map.addEventListener('mouseleave', ()=> setActive(null));
+    legend.addEventListener('mouseover', e=>{
+      const item = e.target.closest('.item'); if(item) setActive(item.dataset.key);
+    });
+    legend.addEventListener('mouseleave', ()=> setActive(null));
+  </script>
+</body>
+</html>
