@@ -116,6 +116,8 @@ $('#buildHeaders')?.addEventListener('click', () => {
   if (on('samesite')) lines.push('Set-Cookie: session=...; SameSite=Lax; Secure; HttpOnly');
   if (on('hsts')) lines.push('Strict-Transport-Security: max-age=63072000; includeSubDomains; preload');
   if (on('cors')) lines.push('Access-Control-Allow-Origin: https://exemple.com');
+  // AJOUT : ligne pédagogique pour illustrer le rate-limit (serveur)
+  if (on('ratelimit')) lines.push('X-RateLimit-Policy: 100 req/min par IP (exemple côté serveur)');
   $('#headersOut').textContent = lines.join('\n');
 });
 

@@ -45,12 +45,12 @@
           <article class="tcard" data-year="1989–1991" data-title="Naissance du Web" data-impact="hypertexte mondial ouvert.">
             <h3><span class="year">1989–1991</span> Naissance du Web</h3>
             <p><strong>Tim Berners-Lee</strong> (CERN) propose le WWW, premier site en 1991. <em>Impact :</em> hypertexte mondial ouvert.</p>
-              <img src="CreateurWWW.png" alt="Créateur du WWW" style="max-width:25%; display:block; margin-top:8px;" />
-            </article>
+            <img src="CreateurWWW.png" alt="Créateur du WWW" style="max-width:25%; display:block; margin-top:8px;" loading="lazy" decoding="async" />
+          </article>
           <article class="tcard" data-year="1993" data-title="Navigateurs graphiques" data-impact="adoption de masse.">
             <h3><span class="year">1993</span> Navigateurs graphiques</h3>
             <p><strong>Mosaic</strong> popularise la navigation visuelle. <em>Impact :</em> adoption de masse.</p>
-              <img src="Mosaic.png" alt="Navigateurs graphiques Mosaic NCSA" style="max-width:100%; display:block; margin-top:8px;" />
+            <img src="Mosaic.png" alt="Navigateurs graphiques Mosaic NCSA" style="max-width:100%; display:block; margin-top:8px;" loading="lazy" decoding="async" />
           </article>
           <article class="tcard" data-year="1994" data-title="W3C" data-impact="interopérabilité.">
             <h3><span class="year">1994</span> W3C</h3>
@@ -59,12 +59,11 @@
           <article class="tcard" data-year="1995" data-title="JavaScript" data-impact="pages interactives.">
             <h3><span class="year">1995</span> JavaScript</h3>
             <p><strong>JavaScript</strong> apporte le dynamisme côté client. <em>Impact :</em> pages interactives.</p>
-              <img src="Js.png" alt="Logo JavaScript" style="max-width:25%; display:block; margin-top:8px;" />
-              
+            <img src="Js.png" alt="Logo JavaScript" style="max-width:25%; display:block; margin-top:8px;" loading="lazy" decoding="async" />
           </article>
-          <article class="tcard" data-year="1996–1998" data-title="CSS & DOM" data-impact="séparation contenu/pré-sentation.">
+          <article class="tcard" data-year="1996–1998" data-title="CSS & DOM" data-impact="séparation contenu/présentation.">
             <h3><span class="year">1996–1998</span> CSS & DOM</h3>
-            <p><strong>CSS1/2</strong>, <strong>DOM</strong>. <em>Impact :</em> séparation contenu/pré-sentation.</p>
+            <p><strong>CSS1/2</strong>, <strong>DOM</strong>. <em>Impact :</em> séparation contenu/présentation.</p>
           </article>
           <article class="tcard" data-year="2004–2006" data-title="Web 2.0 & Ajax" data-impact="apps web riches.">
             <h3><span class="year">2004–2006</span> Web 2.0 & Ajax</h3>
@@ -73,8 +72,7 @@
           <article class="tcard" data-year="2008–2014" data-title="HTML5" data-impact="applications natives du Web.">
             <h3><span class="year">2008–2014</span> HTML5</h3>
             <p>Vidéo, canvas, API. <em>Impact :</em> applications natives du Web.</p>
-              <img src="html5.png" alt="Logo HTML5" style="max-width:25%; display:block; margin-top:8px;" />
-            
+            <img src="html5.png" alt="Logo HTML5" style="max-width:25%; display:block; margin-top:8px;" loading="lazy" decoding="async" />
           </article>
           <article class="tcard" data-year="2015" data-title="HTTP/2" data-impact="chargements plus rapides.">
             <h3><span class="year">2015</span> HTTP/2</h3>
@@ -83,8 +81,7 @@
           <article class="tcard" data-year="2016" data-title="HTTPS massif" data-impact="chiffrement par défaut.">
             <h3><span class="year">2016</span> HTTPS massif</h3>
             <p><strong>Let’s Encrypt</strong>. <em>Impact :</em> chiffrement par défaut.</p>
-              <img src="https.png" alt="Sécurisation HTTPS" style="max-width:40%; display:block; margin-top:8px;" />
-            
+            <img src="https.png" alt="Sécurisation HTTPS" style="max-width:40%; display:block; margin-top:8px;" loading="lazy" decoding="async" />
           </article>
           <article class="tcard" data-year="2019–2022" data-title="HTTP/3 (QUIC)" data-impact="latence réduite.">
             <h3><span class="year">2019–2022</span> HTTP/3 (QUIC)</h3>
@@ -152,6 +149,33 @@
           <p>Une <strong>URI</strong> identifie une ressource. Une <strong>URL</strong> est un type d’URI qui donne aussi le moyen d’y accéder (schéma, hôte…).</p>
         </details>
       </div>
+
+      <!-- AJOUT : Status HTTP & redirections -->
+      <article class="card flow">
+        <h3 class="mt-0">Status HTTP & redirections</h3>
+        <ul>
+          <li><strong>2xx</strong> – Succès (ex. <code>200 OK</code>)</li>
+          <li><strong>3xx</strong> – Redirection (ex. <code>301 Moved Permanently</code>, <code>302 Found</code>)</li>
+          <li><strong>4xx</strong> – Erreur côté client (ex. <code>404 Not Found</code>)</li>
+          <li><strong>5xx</strong> – Erreur serveur (ex. <code>500 Internal Server Error</code>)</li>
+        </ul>
+        <div class="grid g-2">
+          <div>
+            <h4 class="mt-0">301 vs 302</h4>
+            <p><strong>301 (permanente)</strong> : le navigateur et les robots mémorisent la nouvelle URL.<br>
+            <strong>302 (temporaire)</strong> : ne pas mémoriser, revenir à l’URL d’origine plus tard.</p>
+            <p class="small muted">SEO : privilégier <strong>301</strong> quand le déplacement est définitif.</p>
+          </div>
+          <div>
+            <h4 class="mt-0">Exemples serveur (Nginx)</h4>
+            <pre class="code"><code># 301 permanent
+return 301 https://exemple.com$request_uri;
+
+# 302 temporaire
+return 302 https://exemple.com/maintenance;</code></pre>
+          </div>
+        </div>
+      </article>
     </section>
 
     <!-- DOMAINES & DNS — version détaillée -->
@@ -160,31 +184,22 @@
       <p class="lead">Tout ce qui se cache derrière <code>example.com</code> (ou <code>votresite.be</code>) expliqué simplement.</p>
 
       <article class="card flow">
-        <h3 class="mt-0">1) Principe</h3>
-        <p>Un <strong>nom de domaine</strong> est une étiquette mémorisable qui pointe vers des adresses IP. Au lieu de retenir <code>203.0.113.10</code>, on retient <code>exemple.com</code>. Un domaine peut héberger un site web (<code>www.exemple.com</code>), du mail (<code>MX</code>), des APIs, etc.</p>
-        <ul>
-          <li><strong>Structure</strong> : <code>sous-domaine</code>.<code>SLD</code>.<code>TLD</code> → <em>blog</em>.<em>exemple</em>.<em>com</em></li>
-          <li><strong>TLD</strong> (Top-Level Domain) : <code>.com</code>, <code>.be</code>, <code>.org</code>…</li>
-          <li><strong>SLD</strong> (Second-Level Domain) : le cœur du nom (ex. <code>exemple</code>).</li>
-          <li><strong>Sous-domaine</strong> : options devant le SLD (ex. <code>www</code>, <code>api</code>, <code>mail</code>).</li>
-        </ul>
-      </article>
-        <article class="card flow">
-          <div style="display:flex; align-items:flex-start; gap:32px;">
-            <div style="flex:2;">
-              <h3 class="mt-0">1) Principe</h3>
-              <p>Un <strong>nom de domaine</strong> est une étiquette mémorisable qui pointe vers des adresses IP. Au lieu de retenir <code>203.0.113.10</code>, on retient <code>exemple.com</code>. Un domaine peut héberger un site web (<code>www.exemple.com</code>), du mail (<code>MX</code>), des APIs, etc.</p>
-              <ul>
-                <li><strong>Structure</strong> : <code>sous-domaine</code>.<code>SLD</code>.<code>TLD</code> → <em>blog</em>.<em>exemple</em>.<em>com</em></li>
-                <li><strong>TLD</strong> (Top-Level Domain) : <code>.com</code>, <code>.be</code>, <code>.org</code>…</li>
-                <li><strong>SLD</strong> (Second-Level Domain) : le cœur du nom (ex. <code>exemple</code>).</li>
-                <li><strong>Sous-domaine</strong> : options devant le SLD (ex. <code>www</code>, <code>api</code>, <code>mail</code>).</li>
-              </ul>
-            </div>
-            <div style="flex:1; min-width:260px; text-align:center;">
-              <img src="Domaine.png" alt="Schéma nom de domaine et DNS" style="max-width:100%; border-radius:12px; box-shadow:0 2px 12px #0002;" />
-            </div>
+        <div style="display:flex; align-items:flex-start; gap:32px;">
+          <div style="flex:2;">
+            <h3 class="mt-0">1) Principe</h3>
+            <p>Un <strong>nom de domaine</strong> est une étiquette mémorisable qui pointe vers des adresses IP. Au lieu de retenir <code>203.0.113.10</code>, on retient <code>exemple.com</code>. Un domaine peut héberger un site web (<code>www.exemple.com</code>), du mail (<code>MX</code>), des APIs, etc.</p>
+            <ul>
+              <li><strong>Structure</strong> : <code>sous-domaine</code>.<code>SLD</code>.<code>TLD</code> → <em>blog</em>.<em>exemple</em>.<em>com</em></li>
+              <li><strong>TLD</strong> (Top-Level Domain) : <code>.com</code>, <code>.be</code>, <code>.org</code>…</li>
+              <li><strong>SLD</strong> (Second-Level Domain) : le cœur du nom (ex. <code>exemple</code>).</li>
+              <li><strong>Sous-domaine</strong> : options devant le SLD (ex. <code>www</code>, <code>api</code>, <code>mail</code>).</li>
+            </ul>
           </div>
+          <div style="flex:1; min-width:260px; text-align:center;">
+            <img src="Domaine.png" alt="Schéma nom de domaine et DNS" style="max-width:100%; border-radius:12px; box-shadow:0 2px 12px #0002;" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </article>
 
       <article class="card flow">
         <h3 class="mt-0">2) Dépôt / Réservation (en pratique)</h3>
@@ -195,7 +210,7 @@
           <li><strong>Configurer la zone DNS</strong> : A/AAAA (site), CNAME (alias), MX (mail), TXT (SPF/DKIM/DMARC), etc.</li>
           <li><strong>Propager</strong> : attendre que les caches DNS du monde entier se mettent à jour (selon le <em>TTL</em>).</li>
         </ol>
-        <p class="muted">Astuce : choisissez un <strong>TLD</strong> pertinent (ex. <code>.be</code> pour Belgique) et un <strong>SLD</strong> court, facile à prononcer et à écrire.</p>
+        <p class="muted">Astuce : choisissez un <strong>TLD</strong> pertinent (ex. <code>.be</code>) et un <strong>SLD</strong> court, facile à prononcer et à écrire.</p>
       </article>
 
       <article class="card flow">
@@ -349,8 +364,9 @@ www   3600 IN CNAME  @
             <li><strong>CSRF</strong> · action non désirée via session</li>
             <li><strong>Injection</strong> · SQL/NoSQL/commande</li>
             <li><strong>Brute force</strong> · mots de passe</li>
-            </ul>
-            <img src="hacking.png" alt="Hacker cartoon" style="max-width:220px; display:block; margin:18px auto; border-radius:12px; box-shadow:0 2px 12px #0002;" />
+            <li><strong>Scraping / abus</strong> · collecte automatisée massive, dépassement de quotas</li>
+          </ul>
+          <img src="hacking.png" alt="Hacker cartoon" style="max-width:220px; display:block; margin:18px auto; border-radius:12px; box-shadow:0 2px 12px #0002;" loading="lazy" decoding="async" />
         </div>
         <div class="card">
           <h3 class="mt-0">Générateur d’en-têtes (démo)</h3>
@@ -360,12 +376,28 @@ www   3600 IN CNAME  @
             <label><input type="checkbox" name="samesite" checked> Cookies SameSite=Lax</label>
             <label><input type="checkbox" name="hsts" checked> Strict-Transport-Security (HSTS)</label>
             <label><input type="checkbox" name="cors"> CORS (exposer une API)</label>
+            <!-- AJOUT -->
+            <label><input type="checkbox" name="ratelimit"> Limiter le débit (rate-limit) côté serveur</label>
             <button class="btn" type="button" id="buildHeaders">Construire</button>
           </form>
           <pre id="headersOut" class="code" aria-live="polite"></pre>
           <button class="btn small" data-copy="#headersOut">Copier</button>
         </div>
       </div>
+    </section>
+
+    <!-- AJOUT : Sources -->
+    <section class="section" id="sources">
+      <h2>Sources & références</h2>
+      <ul>
+        <li>W3C – <a href="https://www.w3.org/" target="_blank" rel="noopener">w3.org</a></li>
+        <li>WHATWG – <a href="https://whatwg.org/" target="_blank" rel="noopener">whatwg.org</a></li>
+        <li>IETF (RFC HTTP/2, HTTP/3) – <a href="https://www.rfc-editor.org/" target="_blank" rel="noopener">rfc-editor.org</a></li>
+        <li>ICANN / DNS – <a href="https://www.icann.org/" target="_blank" rel="noopener">icann.org</a></li>
+        <li>Let’s Encrypt (HTTPS) – <a href="https://letsencrypt.org/" target="_blank" rel="noopener">letsencrypt.org</a></li>
+        <li>ChatGpt</li>
+      </ul>
+      <p class="small muted">Ces liens sont proposés comme points de départ officiels.</p>
     </section>
 
     <footer class="section">
