@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Domaines & DNS</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Aller au contenu</a>
+
+  <header class="header">
+    <div class="topbar">
+      <div class="wrap title"><h1>Domaines &amp; DNS</h1></div>
+    </div>
+
+    <!-- NAV Hamburger -->
+    <nav class="subnav" aria-label="Navigation">
+      <div class="wrap navwrap">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Ouvrir le menu">
+          <span class="line"></span><span class="line"></span><span class="line"></span>
+        </button>
+        <div class="navmenu" id="navMenu" role="menu">
+          <a href="index.html" role="menuitem">Accueil</a>
+          <a href="timeline.html" role="menuitem">Timeline</a>
+          <a href="url.html" role="menuitem">URL (visuel)</a>
+          <a href="domains.html" role="menuitem" class="active">Domaines &amp; DNS</a>
+          <a href="standards.html" role="menuitem">Standards</a>
+          <a href="security.html" role="menuitem">Sécurité</a>
+          <a href="sources.html" role="menuitem">Sources</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap section">
+    <ul class="objectives">
+      <li>Expliquer “nom de domaine” vs “DNS”.</li>
+      <li>Suivre la résolution DNS jusqu’à l’IP.</li>
+    </ul>
+    <p class="lead">Tout ce qui se cache derrière <code>example.com</code> (ou <code>votresite.be</code>) expliqué simplement.</p>
+
+    <!-- 1) Principe -->
+    <article class="card flow">
+      <div style="display:flex; align-items:flex-start; gap:32px;">
+        <div style="flex:2;">
+          <h3 class="mt-0">1) Principe</h3>
+          <p>Un <strong>nom de domaine</strong> est une étiquette mémorisable qui pointe vers des adresses IP. Au lieu de retenir <code>203.0.113.10</code>, on retient <code>exemple.com</code>. Un domaine peut héberger un site web (<code>www.exemple.com</code>), du mail (<code>MX</code>), des APIs, etc.</p>
+          <ul>
+            <li><strong>Structure</strong> : <code>sous-domaine</code>.<code>SLD</code>.<code>TLD</code> → <em>blog</em>.<em>exemple</em>.<em>com</em></li>
+            <li><strong>TLD</strong> (Top-Level Domain) : <code>.com</code>, <code>.be</code>, <code>.org</code>…</li>
+            <li><strong>SLD</strong> (Second-Level Domain) : le cœur du nom (ex. <code>exemple</code>).</li>
+            <li><strong>Sous-domaine</strong> : options devant le SLD (ex. <code>www</code>, <code>api</code>, <code>mail</code>).</li>
+          </ul>
+        </div>
+        <div style="flex:1; min-width:260px; text-align:center;">
+          <img src="Domaine.png" alt="Schéma nom de domaine et DNS" style="max-width:100%; border-radius:12px; box-shadow:0 2px 12px #0002;" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </article>
+
+    <!-- 2) Dépôt -->
+    <article class="card flow">
+      <h3 class="mt-0">2) Dépôt / Réservation (en pratique)</h3>
+      <ol>
+        <li><strong>Vérifier la disponibilité</strong> chez un registrar (ex. Gandi, OVHcloud, Namecheap…).</li>
+        <li><strong>Enregistrer</strong> le domaine (1 à 10 ans) à votre nom (vous devenez le <em>registrant</em>).</li>
+        <li><strong>Renseigner les serveurs DNS</strong> (nameservers) du fournisseur que vous utilisez).</li>
+        <li><strong>Configurer la zone DNS</strong> : A/AAAA (site), CNAME (alias), MX (mail), TXT (SPF/DKIM/DMARC), etc.</li>
+        <li><strong>Propager</strong> : attendre que les caches DNS du monde entier se mettent à jour (selon le <em>TTL</em>).</li>
+      </ol>
+      <p class="muted">Astuce : choisissez un <strong>TLD</strong> pertinent (ex. <code>.be</code>) et un <strong>SLD</strong> court, facile à prononcer et à écrire.</p>
+    </article>
+
+    <!-- 3) Acteurs -->
+    <article class="card flow">
+      <h3 class="mt-0">3) Acteurs (qui fait quoi ?)</h3>
+      <div class="grid g-2">
+        <div>
+          <ul>
+            <li><strong>ICANN</strong> : supervise l’écosystème global des TLD.</li>
+            <li><strong>Registry</strong> : opère un TLD (ex. Verisign pour <code>.com</code>, DNS Belgium pour <code>.be</code>).</li>
+            <li><strong>Registrar</strong> : revendeur accrédité auprès d’un registry (interface où vous achetez/renouvelez).</li>
+            <li><strong>Registrant</strong> : titulaire du domaine (vous, votre asbl/entreprise).</li>
+            <li><strong>Hébergeur DNS</strong> : tient les serveurs <em>autoritatifs</em> de votre zone (peut être le registrar ou un tiers).</li>
+          </ul>
+        </div>
+        <div>
+          <table>
+            <thead><tr><th>Terme</th><th>Définition</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Zone DNS</strong></td><td>Fichier d’enregistrements pour votre domaine.</td></tr>
+              <tr><td><strong>TTL</strong></td><td>Durée de vie en cache d’un enregistrement.</td></tr>
+              <tr><td><strong>Glue record</strong></td><td>IP d’un <code>ns</code> placé au registre pour éviter une boucle de dépendance.</td></tr>
+              <tr><td><strong>WHOIS</strong></td><td>Base publique (souvent masquée) des infos d’enregistrement.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4) Cycle de vie -->
+    <article class="card flow">
+      <h3 class="mt-0">4) Cycle de vie d’un domaine</h3>
+      <ol>
+        <li><strong>Disponible</strong> → vous pouvez l’enregistrer.</li>
+        <li><strong>Enregistré</strong> → actif tant que vous renouvelez à l’échéance.</li>
+        <li><strong>Expiration</strong> → le domaine cesse de répondre si non renouvelé.</li>
+        <li><strong>Période de grâce</strong> (selon TLD) → vous pouvez encore renouveler sans pénalité majeure.</li>
+        <li><strong>Redemption</strong> → récupération possible mais plus coûteuse.</li>
+        <li><strong>Suppression</strong> → retour dans le pool public, quelqu’un d’autre peut l’acheter.</li>
+      </ol>
+      <p class="muted">Les durées exactes (grâce/redemption) varient selon le <strong>TLD</strong> et le <strong>registry</strong>.</p>
+    </article>
+
+    <!-- 5) DNS -->
+    <article class="card flow">
+      <h3 class="mt-0">5) DNS : comment le navigateur trouve votre site ?</h3>
+      <ol>
+        <li>Le navigateur demande <code>www.votresite.be</code> au <strong>résolveur</strong> de l’utilisateur (FAI, 1.1.1.1…).</li>
+        <li>Le résolveur suit la chaîne : <strong>racine</strong> → <strong>TLD</strong> (<code>.be</code>) → <strong>serveurs autoritatifs</strong> de votre domaine.</li>
+        <li>Le serveur autoritatif renvoie l’<strong>IP</strong> (enregistrement <code>A/AAAA</code>) à utiliser.</li>
+        <li>Le navigateur contacte cette IP en <strong>HTTP/HTTPS</strong> → votre site s’affiche.</li>
+      </ol>
+      <div class="grid g-2">
+        <div>
+          <h4 class="mt-0">Enregistrements usuels</h4>
+          <ul>
+            <li><strong>A/AAAA</strong> : IPv4/IPv6 du serveur web.</li>
+            <li><strong>CNAME</strong> : alias (ex. <code>www</code> → <code>@</code>).</li>
+            <li><strong>MX</strong> : serveurs de messagerie.</li>
+            <li><strong>TXT</strong> : SPF, DKIM, DMARC, validations.</li>
+            <li><strong>NS</strong> : serveurs de noms de la zone.</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mt-0">Extrait de zone (copiable)</h4>
+          <pre class="code" id="zoneSample"><code>; Zone votresite.be
+@     3600 IN A      203.0.113.10
+www   3600 IN CNAME  @
+@     3600 IN MX 10  mail.votresite.be.
+@     3600 IN TXT    "v=spf1 include:mail.votresite.be -all"</code></pre>
+          <button class="btn small" data-copy="#zoneSample">Copier</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Récap -->
+    <article class="card flow">
+      <h3 class="mt-0">Récap express</h3>
+      <ul class="grid g-2">
+        <li><strong>Nom =</strong> étiquette humaine → pointe vers IP.</li>
+        <li><strong>Réserver</strong> chez un registrar, configurer DNS, laisser propager.</li>
+        <li><strong>Acteurs</strong> : ICANN → Registry → Registrar → Registrant.</li>
+        <li><strong>Cycle</strong> : dispo → enregistré → expire → grâce → redemption → suppression.</li>
+        <li><strong>DNS</strong> : résolveur → racine → TLD → autoritatif → IP → site.</li>
+      </ul>
+    </article>
+
+    <p class="next-wrap"><a class="btn next" href="standards.html">Section suivante → Standards</a></p>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden>Copié !</div>
+  <script src="js/common.js"></script>
+  <script src="js/domains.js"></script>
+</body>
+</html>

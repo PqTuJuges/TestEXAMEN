@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Timeline du Web</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Aller au contenu</a>
+
+  <header class="header">
+    <div class="topbar">
+      <div class="wrap title">
+        <h1>Timeline du Web</h1>
+      </div>
+    </div>
+
+    <nav class="subnav" aria-label="Navigation">
+  <div class="wrap navwrap">
+    <!-- Bouton hamburger -->
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Ouvrir le menu">
+      <span class="line"></span><span class="line"></span><span class="line"></span>
+    </button>
+
+    <!-- Menu de liens -->
+    <div class="navmenu" id="navMenu" role="menu">
+      <a href="index.html" role="menuitem">Accueil</a>
+      <a href="timeline.html" role="menuitem">Timeline</a>
+      <a href="url.html" role="menuitem">URL</a>
+      <a href="domains.html" role="menuitem">Domaines &amp; DNS</a>
+      <a href="standards.html" role="menuitem">Standards</a>
+      <a href="security.html" role="menuitem">Sécurité</a>
+      <a href="sources.html" role="menuitem">Sources</a>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  <main id="main" class="wrap section">
+    
+    <p class="lead">Parcours les jalons puis réponds au mini-quiz.</p>
+
+    <div class="card flow">
+      <!-- (chip supprimé) -->
+
+      <div class="timeline-cards" id="timelineCards" data-active="0" tabindex="0" aria-label="Jalons de la timeline">
+        <article class="tcard" data-year="1989–1991" data-title="Naissance du Web" data-impact="hypertexte mondial ouvert.">
+          <h3><span class="year">1989–1991</span> Naissance du Web</h3>
+          <p><strong>Tim Berners-Lee</strong> (CERN) propose le WWW, premier site en 1991. <em>Impact :</em> hypertexte mondial ouvert.</p>
+          <img src="CreateurWWW.png" alt="Créateur du WWW" style="max-width:25%; display:block; margin-top:8px;" loading="lazy" decoding="async" />
+        </article>
+
+        <article class="tcard" data-year="1993" data-title="Navigateurs graphiques" data-impact="adoption de masse.">
+          <h3><span class="year">1993</span> Navigateurs graphiques</h3>
+          <p><strong>Mosaic</strong> popularise la navigation visuelle. <em>Impact :</em> adoption de masse.</p>
+          <img src="Mosaic.png" alt="Navigateurs graphiques Mosaic NCSA" style="max-width:100%; display:block; margin-top:8px;" loading="lazy" decoding="async" />
+        </article>
+
+        <article class="tcard" data-year="1994" data-title="W3C" data-impact="interopérabilité.">
+          <h3><span class="year">1994</span> W3C</h3>
+          <p>Création du <strong>W3C</strong> pour standardiser. <em>Impact :</em> interopérabilité.</p>
+        </article>
+
+        <article class="tcard" data-year="1995" data-title="JavaScript" data-impact="pages interactives.">
+          <h3><span class="year">1995</span> JavaScript</h3>
+          <p><strong>JavaScript</strong> apporte le dynamisme côté client. <em>Impact :</em> pages interactives.</p>
+          <img src="Js.png" alt="Logo JavaScript" style="max-width:25%; display:block; margin-top:8px;" loading="lazy" decoding="async" />
+        </article>
+
+        <article class="tcard" data-year="1996–1998" data-title="CSS & DOM" data-impact="séparation contenu/présentation.">
+          <h3><span class="year">1996–1998</span> CSS & DOM</h3>
+          <p><strong>CSS1/2</strong>, <strong>DOM</strong>. <em>Impact :</em> séparation contenu/présentation.</p>
+        </article>
+
+        <article class="tcard" data-year="2004–2006" data-title="Web 2.0 & Ajax" data-impact="apps web riches.">
+          <h3><span class="year">2004–2006</span> Web 2.0 & Ajax</h3>
+          <p>Wikipedia, YouTube; <strong>Ajax</strong>. <em>Impact :</em> apps web riches.</p>
+        </article>
+
+        <article class="tcard" data-year="2008–2014" data-title="HTML5" data-impact="applications natives du Web.">
+          <h3><span class="year">2008–2014</span> HTML5</h3>
+          <p>Vidéo, canvas, API. <em>Impact :</em> applications natives du Web.</p>
+          <img src="html5.png" alt="Logo HTML5" style="max-width:25%; display:block; margin-top:8px;" loading="lazy" decoding="async" />
+        </article>
+
+        <article class="tcard" data-year="2015" data-title="HTTP/2" data-impact="chargements plus rapides.">
+          <h3><span class="year">2015</span> HTTP/2</h3>
+          <p>Binaire, multiplexé. <em>Impact :</em> chargements plus rapides.</p>
+        </article>
+
+        <article class="tcard" data-year="2016" data-title="HTTPS massif" data-impact="chiffrement par défaut.">
+          <h3><span class="year">2016</span> HTTPS massif</h3>
+          <p><strong>Let’s Encrypt</strong>. <em>Impact :</em> chiffrement par défaut.</p>
+          <img src="https.png" alt="Sécurisation HTTPS" style="max-width:40%; display:block; margin-top:8px;" loading="lazy" decoding="async" />
+        </article>
+
+        <article class="tcard" data-year="2019–2022" data-title="HTTP/3 (QUIC)" data-impact="latence réduite.">
+          <h3><span class="year">2019–2022</span> HTTP/3 (QUIC)</h3>
+          <p>Transport sur QUIC/UDP. <em>Impact :</em> latence réduite.</p>
+        </article>
+
+        <article class="tcard" data-year="2020–2024" data-title="WebAuthn & Passkeys" data-impact="sécurité + UX.">
+          <h3><span class="year">2020–2024</span> WebAuthn & Passkeys</h3>
+          <p>Sans mot de passe. <em>Impact :</em> sécurité + UX.</p>
+        </article>
+      </div>
+    </div>
+
+    <details class="quiz" data-quiz="timeline" style="margin-top:16px">
+      <summary>Mini-quiz : que s’est-il passé en 2015 ?</summary>
+      <form>
+        <label><input type="radio" name="q1" value="HTTP/2"> La normalisation de HTTP/2</label>
+        <label><input type="radio" name="q1" value="HTML5"> L’arrivée d’HTML5</label>
+        <label><input type="radio" name="q1" value="Mosaic"> Le premier navigateur Mosaic</label>
+        <button class="btn">Vérifier</button>
+      </form>
+      <p class="feedback" aria-live="polite"></p>
+    </details>
+
+    <p class="next-wrap"><a class="btn next" href="url.html">Section suivante → URL</a></p>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden>Copié !</div>
+  <script src="js/common.js"></script>
+  <script src="js/timeline.js"></script>
+</body>
+</html>
