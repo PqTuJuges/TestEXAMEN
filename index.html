@@ -1,65 +1,90 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fondamentaux du Web – Accueil</title>
+  <title>Fondamentaux du Web - Accueil</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <a class="skip" href="#main">Aller au contenu</a>
   <header class="header">
     <div class="topbar">
       <div class="wrap title">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 2l2.39 4.84L20 8l-4 3.89.95 5.54L12 15.77 7.05 17.43 8 11.89 4 8l5.61-1.16L12 2z" stroke="#7aa2ff"/>
+          <path d="M12 2l2.39 4.84L20 8l-4 3.89.95 5.54L12 15.77 7.05 17.43 8 11.89 4 8l5.61-1.16L12 2z"
+            stroke="#7aa2ff" />
         </svg>
         <h1>Fondamentaux du Web</h1>
-        <div class="tagline small">Parcours pédagogique interactif</div>
+
       </div>
     </div>
     <nav class="subnav" aria-label="Navigation">
-  <div class="wrap navwrap">
-    <!-- Bouton hamburger -->
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Ouvrir le menu">
-      <span class="line"></span><span class="line"></span><span class="line"></span>
-    </button>
+      <div class="wrap navwrap">
+        <!-- Bouton hamburger -->
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu"
+          aria-label="Ouvrir le menu">
+          <span class="line"></span><span class="line"></span><span class="line"></span>
+        </button>
 
-    <!-- Menu de liens -->
-    <div class="navmenu" id="navMenu" role="menu">
-      <a href="index.html" role="menuitem" class="active">Accueil</a>
-      <a href="timeline.html" role="menuitem">Timeline</a>
-      <a href="url.html" role="menuitem">URL (visuel)</a>
-      <a href="domains.html" role="menuitem">Domaines &amp; DNS</a>
-      <a href="standards.html" role="menuitem">Standards</a>
-      <a href="security.html" role="menuitem">Sécurité</a>
-      <a href="sources.html" role="menuitem">Sources</a>
-    </div>
-  </div>
-</nav>
-
+        <!-- Menu de liens -->
+        <div class="navmenu-panel" id="navMenu">
+          <div class="navmenu" role="menu">
+            <a href="index.html" role="menuitem" class="active">Accueil</a>
+            <a href="timeline.html" role="menuitem">Timeline</a>
+            <a href="url.html" role="menuitem">URL (visuel)</a>
+            <a href="domains.html" role="menuitem">Domaines &amp; DNS</a>
+            <a href="standards.html" role="menuitem">Standards</a>
+            <a href="security.html" role="menuitem">Securite</a>
+            <a href="sources.html" role="menuitem">Sources</a>
+          </div>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <main id="main" class="wrap">
     <section class="section">
       <h2>Bienvenue</h2>
-      <p class="lead">Choisis un sujet. Chaque page contient textes, schémas, mini-labs et quiz.</p>
+      <p class="lead">Choisis un sujet. Chaque page contient textes, schemas, mini-labs et quiz.</p>
       <div class="grid g-2">
-        <a class="card" href="timeline.html"><h3 class="mt-0">Timeline du Web</h3><p>Jalons majeurs et impacts.</p></a>
-        <a class="card" href="url.html"><h3 class="mt-0">URL : explication visuelle</h3><p>Découpe d’une URL + codes HTTP.</p></a>
-        <a class="card" href="domains.html"><h3 class="mt-0">Domaines & DNS</h3><p>Acteurs, cycle de vie, résolution, animation.</p></a>
-        <a class="card" href="standards.html"><h3 class="mt-0">Standards</h3><p>W3C, WHATWG, IETF, TC39, Unicode.</p></a>
-        <a class="card" href="security.html"><h3 class="mt-0">Sécurité</h3><p>Menaces courantes & protections.</p></a>
-        <a class="card" href="sources.html"><h3 class="mt-0">Sources & références</h3><p>Liens officiels & mentions.</p></a>
+        <a class="card" href="timeline.html">
+          <h3 class="mt-0">Timeline du Web</h3>
+          <p>Jalons majeurs et impacts.</p>
+        </a>
+        <a class="card" href="url.html">
+          <h3 class="mt-0">URL : explication visuelle</h3>
+          <p>Decoupe d'une URL + codes HTTP.</p>
+        </a>
+        <a class="card" href="domains.html">
+          <h3 class="mt-0">Domaines &amp; DNS</h3>
+          <p>Acteurs, cycle de vie, resolution, animation.</p>
+        </a>
+        <a class="card" href="standards.html">
+          <h3 class="mt-0">Standards</h3>
+          <p>W3C, WHATWG, IETF, TC39, Unicode.</p>
+        </a>
+        <a class="card" href="security.html">
+          <h3 class="mt-0">Securite</h3>
+          <p>Menaces courantes &amp; protections.</p>
+        </a>
+        <a class="card" href="sources.html">
+          <h3 class="mt-0">Sources &amp; references</h3>
+          <p>Liens officiels &amp; mentions.</p>
+        </a>
       </div>
     </section>
 
     <footer class="section">
-      <div class="small">Dernière mise à jour : <span id="updated"></span>.</div>
+      <div class="small">Derniere mise a jour : <span id="updated"></span>.</div>
+      <div class="small">Site cree par Mathias Malo et Remy Pauly.</div>
     </footer>
   </main>
 
-  <div id="toast" class="toast" role="status" aria-live="polite" hidden>Copié !</div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden>Copie !</div>
   <script src="js/common.js"></script>
 </body>
+
 </html>

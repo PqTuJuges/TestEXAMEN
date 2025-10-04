@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sources & références</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <a class="skip" href="#main">Aller au contenu</a>
 
   <header class="header">
     <div class="topbar">
-      <div class="wrap title"><h1>Sources &amp; références</h1></div>
+      <div class="wrap title">
+        <h1>Sources &amp; références</h1>
+      </div>
     </div>
 
     <!-- NAV Hamburger -->
     <nav class="subnav" aria-label="Navigation">
       <div class="wrap navwrap">
-        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Ouvrir le menu">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu"
+          aria-label="Ouvrir le menu">
           <span class="line"></span><span class="line"></span><span class="line"></span>
         </button>
-        <div class="navmenu" id="navMenu" role="menu">
-          <a href="index.html" role="menuitem">Accueil</a>
-          <a href="timeline.html" role="menuitem">Timeline</a>
-          <a href="url.html" role="menuitem">URL (visuel)</a>
-          <a href="domains.html" role="menuitem">Domaines &amp; DNS</a>
-          <a href="standards.html" role="menuitem">Standards</a>
-          <a href="security.html" role="menuitem">Sécurité</a>
-          <a href="sources.html" role="menuitem" class="active">Sources</a>
+        <div class="navmenu-panel" id="navMenu">
+          <div class="navmenu" role="menu">
+            <a href="index.html" role="menuitem">Accueil</a>
+            <a href="timeline.html" role="menuitem">Timeline</a>
+            <a href="url.html" role="menuitem">URL (visuel)</a>
+            <a href="domains.html" role="menuitem">Domaines &amp; DNS</a>
+            <a href="standards.html" role="menuitem">Standards</a>
+            <a href="security.html" role="menuitem">Sécurité</a>
+            <a href="sources.html" role="menuitem" class="active">Sources</a>
+          </div>
         </div>
       </div>
     </nav>
@@ -39,9 +46,11 @@
       <ul>
         <li>W3C – <a href="https://www.w3.org/" target="_blank" rel="noopener">w3.org</a></li>
         <li>WHATWG – <a href="https://whatwg.org/" target="_blank" rel="noopener">whatwg.org</a></li>
-        <li>IETF (RFC HTTP/2, HTTP/3) – <a href="https://www.rfc-editor.org/" target="_blank" rel="noopener">rfc-editor.org</a></li>
+        <li>IETF (RFC HTTP/2, HTTP/3) – <a href="https://www.rfc-editor.org/" target="_blank"
+            rel="noopener">rfc-editor.org</a></li>
         <li>ICANN / DNS – <a href="https://www.icann.org/" target="_blank" rel="noopener">icann.org</a></li>
-        <li>Let’s Encrypt (HTTPS) – <a href="https://letsencrypt.org/" target="_blank" rel="noopener">letsencrypt.org</a></li>
+        <li>Let’s Encrypt (HTTPS) – <a href="https://letsencrypt.org/" target="_blank"
+            rel="noopener">letsencrypt.org</a></li>
       </ul>
       <p class="small muted">Projet réalisé avec l’assistance d’un modèle IA (prompts → code).</p>
     </article>
@@ -52,4 +61,5 @@
   <div id="toast" class="toast" role="status" aria-live="polite" hidden>Copié !</div>
   <script src="js/common.js"></script>
 </body>
+
 </html>

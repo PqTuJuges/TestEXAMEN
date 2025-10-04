@@ -20,17 +20,15 @@ header{all:unset}
 .topbar .title h1{margin:0;font-size:clamp(20px,2.5vw,28px)}
 .topbar .tagline{margin-left:auto;color:var(--muted);font-size:14px}
 
-.subnav{
-  position:fixed;top:var(--topbar-h);left:0;right:0;height:var(--subnav-h);z-index:999;
-  background:rgba(11,16,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid #1f2a4d
-}
-.subnav .navline{display:flex;gap:10px;align-items:center;height:100%}
-.subnav a, .subnav .btn.ghost{
-  padding:6px 10px;border:1px solid #26335f;border-radius:999px;color:var(--muted);
-  text-decoration:none;background:transparent
-}
-.subnav a:hover, .subnav .btn.ghost:hover{border-color:var(--accent);color:var(--text);background:rgba(122,162,255,.06)}
-.subnav a.active{color:var(--text);border-color:var(--accent);background:rgba(122,162,255,.10)}
+/* ===== Sous‑nav fixe sous la topbar ===== */
+.subnav{position:fixed;top:var(--topbar-h);left:0;right:0;height:var(--subnav-h);z-index:999;background:rgba(11,16,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid #1f2a4d;overflow:visible}
+.navwrap{display:flex;align-items:center;gap:10px;height:100%;justify-content:flex-end}
+
+/* Liens (desktop par défaut) */
+.navmenu{display:flex;align-items:center;gap:10px}
+.navmenu a{padding:6px 10px;border:1px solid #26335f;border-radius:999px;color:var(--muted);text-decoration:none;background:transparent;white-space:nowrap}
+.navmenu a:hover{border-color:var(--accent);color:var(--text);background:rgba(122,162,255,.06)}
+.navmenu a.active{color:var(--text);border-color:var(--accent);background:rgba(122,162,255,.10)}
 
 /* Réserver l’espace total du header */
 body{padding-top:var(--header-total)}
@@ -95,273 +93,122 @@ nav{display:flex;flex-wrap:wrap;gap:12px}
 /* Ancres : arriver juste sous la sous-nav, sans espace */
 section{scroll-margin-top:var(--header-total)}
 
-/* ====== Responsive fixes – bloc "URL : explication visuelle" ====== */
-
-/* Tablet : on casse le placement rigide et on laisse les tags se ranger tout seuls */
+/* ====== Responsive fixes – bloc URL ====== */
 @media (max-width: 900px) {
-  /* Les tags ne suivent plus les positions en colonnes fixées (inline styles). */
   .url-map .tag { grid-column: auto !important; }
-
-  /* 6 colonnes flexibles au lieu des 12 rigides -> plus d'air pour chaque tag */
   .url-map { grid-template-columns: repeat(6, 1fr); }
 }
-
-/* Mobile */
 @media (max-width: 600px) {
-  /* L’input passe sur toute la ligne, les boutons vont à côté / dessous */
   .url-inputs { flex-wrap: wrap; gap: 8px; }
   .url-inputs input { flex: 1 1 100%; min-width: 100%; }
   .url-inputs .btn { flex: 1 1 48%; min-width: 140px; }
-
-  /* Si trop de chips d’exemples, permettre un petit scroll horizontal discret */
   .chips { overflow-x: auto; padding-bottom: 6px; }
-
-  /* Grille auto-adaptative pour les tags : largeur mini confortable */
-  .url-map {
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-    gap: 8px;
-  }
-  .url-map .tag {
-    grid-column: auto !important;  /* écrase les grid-column inline */
-    font-size: 12px;
-    padding: 8px 10px;
-  }
-
-  /* Légende en une colonne pour éviter l’écrasement du texte */
+  .url-map { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
+  .url-map .tag { grid-column: auto !important; font-size: 12px; padding: 8px 10px; }
   .legend { grid-template-columns: 1fr; }
-
-  /* Un peu plus compact en mobile */
   .chip { font-size: 11px; padding: 3px 8px; }
 }
 
-/* ===== Fix responsive image – section Domaines & DNS ===== */
-
-/* Autoriser l’enroulement si la place manque, même hors media query */
-#domains .card > div[style*="display:flex"] {
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-/* L’image ne déborde jamais */
-#domains .card > div[style*="display:flex"] > :last-child img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 460px; /* taille max confortable */
-}
-
-/* Empilage propre et overrides plus forts en mobile/tablette */
+/* ===== Fix responsive image – Domaines & DNS ===== */
+#domains .card > div[style*="display:flex"] { flex-wrap: wrap; gap: 16px; }
+#domains .card > div[style*="display:flex"] > :last-child img { display:block; width:100%; height:auto; max-width:460px; }
 @media (max-width: 900px) {
-  #domains .card > div[style*="display:flex"] {
-    flex-direction: column;
-    align-items: center;
-  }
-  /* Colonne texte : pleine largeur */
-  #domains .card > div[style*="display:flex"] > :first-child {
-    flex: 1 1 auto !important;   /* override le flex:2 inline */
-    width: 100% !important;
-  }
-  /* Colonne image : enlever min-width inline et centrer */
-  #domains .card > div[style*="display:flex"] > :last-child {
-    flex: 0 0 auto !important;   /* override le flex:1 inline */
-    min-width: 0 !important;     /* override min-width:260px inline */
-    width: 100% !important;
-    max-width: 460px;
-    margin: 12px auto 0;
-    text-align: center;
-  }
-  #domains .card > div[style*="display:flex"] > :last-child img {
-    max-width: 100%;
-  }
+  #domains .card > div[style*="display:flex"] { flex-direction: column; align-items: center; }
+  #domains .card > div[style*="display:flex"] > :first-child { flex:1 1 auto !important; width:100% !important; }
+  #domains .card > div[style*="display:flex"] > :last-child { flex:0 0 auto !important; min-width:0 !important; width:100% !important; max-width:460px; margin:12px auto 0; text-align:center; }
+  #domains .card > div[style*="display:flex"] > :last-child img { max-width:100%; }
 }
 
-/* ==== Fix global pour le split texte + image du bloc "Principe" ==== */
-/* Cible le <div style="display:flex; ..."> contenu dans une .card */
-.card > div[style*="display:flex"] {
-  flex-wrap: wrap;     /* autorise le retour à la ligne si pas assez de place */
-  gap: 16px;
-}
-
-/* Image jamais trop grande */
-.card > div[style*="display:flex"] > :last-child img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 460px;
-}
-
-/* --- Empilage sur petits écrans : TEXTE au-dessus, IMAGE en dessous --- */
+/* ==== Fix global split texte + image ==== */
+.card > div[style*="display:flex"] { flex-wrap: wrap; gap: 16px; }
+.card > div[style*="display:flex"] > :last-child img { display:block; width:100%; height:auto; max-width:460px; }
 @media (max-width: 900px) {
-  .card > div[style*="display:flex"] {
-    flex-direction: column;      /* empile verticalement */
-    align-items: center;         /* centre l'image */
-  }
-  .card > div[style*="display:flex"] > :first-child {
-    order: 1;                    /* texte en premier */
-    flex: 1 1 auto !important;   /* annule le flex inline */
-    width: 100% !important;
-  }
-  .card > div[style*="display:flex"] > :last-child {
-    order: 2;                    /* image en second (en dessous) */
-    flex: 0 0 auto !important;   /* annule le flex inline */
-    min-width: 0 !important;     /* annule le min-width:260px inline */
-    width: 100% !important;
-    max-width: 460px;
-    margin: 12px auto 0;
-    text-align: center;
-  }
-  .card > div[style*="display:flex"] > :last-child img {
-    max-width: 100%;
-  }
+  .card > div[style*="display:flex"] { flex-direction: column; align-items: center; }
+  .card > div[style*="display:flex"] > :first-child { order:1; flex:1 1 auto !important; width:100% !important; }
+  .card > div[style*="display:flex"] > :last-child { order:2; flex:0 0 auto !important; min-width:0 !important; width:100% !important; max-width:460px; margin:12px auto 0; text-align:center; }
+  .card > div[style*="display:flex"] > :last-child img { max-width:100%; }
 }
-/* === Sous-nav responsive : scroll + snap + dégradés (DESKTOP UNIQUEMENT) === */
+
+/* === Sous-nav défilable (desktop) === */
 @media (min-width: 901px) {
-  .subnav {
-    overflow: hidden; /* masque les dégradés uniquement en desktop */
-  }
-
-  /* La ligne de liens devient une piste scrollable */
-  .subnav .navline{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    height: 100%;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-  }
-  .subnav .navline::-webkit-scrollbar{ display:none; } /* Chrome/Safari */
-
-  /* Chaque lien est un “point d’accroche” pour le snap */
-  .subnav a{ 
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-    white-space: nowrap;
-  }
-
-  /* Indices visuels (dégradés) pour dire “ça continue…” */
-  .subnav::before,
-  .subnav::after{
-    content:"";
-    position:absolute; top:0; bottom:0; width:36px; z-index:1;
-    pointer-events:none;
-  }
-  .subnav::before{
-    left:0;
-    background: linear-gradient(90deg, rgba(11,16,32,0.95) 35%, rgba(11,16,32,0) 100%);
-  }
-  .subnav::after{
-    right:0;
-    background: linear-gradient(270deg, rgba(11,16,32,0.95) 35%, rgba(11,16,32,0) 100%);
-  }
-
-  /* Curseur “main” quand on drag-to-scroll */
-  .navline.grabbing{ cursor: grabbing; }
-  @media (hover:hover){
-    .subnav .navline{ cursor: grab; }
-  }
+  .subnav{overflow:hidden}
+  .subnav .navline{display:flex;align-items:center;gap:10px;height:100%;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;scrollbar-width:none}
+  .subnav .navline::-webkit-scrollbar{display:none}
+  .subnav a{flex:0 0 auto;scroll-snap-align:start;white-space:nowrap}
+  .subnav::before,.subnav::after{content:"";position:absolute;top:0;bottom:0;width:36px;z-index:1;pointer-events:none}
+  .subnav::before{left:0;background:linear-gradient(90deg,rgba(11,16,32,.95) 35%,rgba(11,16,32,0) 100%)}
+  .subnav::after{right:0;background:linear-gradient(270deg,rgba(11,16,32,.95) 35%,rgba(11,16,32,0) 100%)}
+  .navline.grabbing{cursor:grabbing}
+  @media (hover:hover){ .subnav .navline{cursor:grab} }
 }
 
-/* ===== Hamburger nav ===== */
-.subnav { position:fixed; top:var(--topbar-h); left:0; right:0; height:var(--subnav-h); z-index:999;
-  background:rgba(11,16,32,.92); backdrop-filter:blur(10px); border-bottom:1px solid #1f2a4d; overflow:visible; }
-.navwrap { display:flex; align-items:center; gap:10px; height:100%; }
-
+/* ===== HAMBURGER (mobile) – correctif clé ===== */
 /* Bouton hamburger */
-.nav-toggle{ display:none; align-items:center; justify-content:center; width:40px; height:34px;
-  border:1px solid #26335f; border-radius:8px; background:#0e1736; color:var(--text); }
-.nav-toggle .line{ display:block; width:18px; height:2px; background:var(--muted); margin:2px 0; transition:transform .2s, opacity .2s; }
+.nav-toggle{display:none;align-items:center;justify-content:center;width:40px;height:34px;border:1px solid #26335f;border-radius:8px;background:#0e1736;color:var(--text)}
+.nav-toggle .line{display:block;width:18px;height:2px;background:var(--muted);margin:2px 0;transition:transform .2s,opacity .2s}
 
-/* Menu (desktop = inline) */
-.navmenu{ display:flex; align-items:center; gap:10px; height:100%; }
-.navmenu a{
-  padding:6px 10px; border:1px solid #26335f; border-radius:999px; color:var(--muted);
-  text-decoration:none; background:transparent; white-space:nowrap;
+/* Panneau masqué par défaut via max-height */
+/* Important: on ne s’appuie pas sur display:none pour permettre l’animation et éviter les conflits */
+.navmenu-panel{position:absolute;left:0;right:0;top:100%;overflow:hidden;max-height:0;transition:max-height .25s ease;z-index:1100;box-shadow:0 8px 16px rgba(0,0,0,.35)}
+
+@media (max-width:900px){
+.nav-toggle{ display:inline-flex; }
+
+
+/* Panneau fermé par défaut, SANS scroll interne */
+.navmenu-panel{
+position:absolute; left:0; right:0; top:100%;
+background:rgba(11,16,32,.98); border-bottom:1px solid #1f2a4d;
+overflow:hidden; /* ✅ empêche le débordement quand fermé */
+max-height:0; /* fermé */
+transition:max-height .25s ease; z-index:1100;
+box-shadow:0 8px 16px rgba(0,0,0,.35);
+padding:0;
 }
-.navmenu a:hover{ border-color:var(--accent); color:var(--text); background:rgba(122,162,255,.06); }
-.navmenu a.active{ color:var(--text); border-color:var(--accent); background:rgba(122,162,255,.10); }
+.navmenu-panel.open{ max-height:9999px; } /* ✅ tout visible, pas de scroll interne */
 
-/* Mobile : le menu devient un panneau déroulant */
-@media (max-width: 900px){
-  .nav-toggle{ display:inline-flex; }
-  .navmenu{
-    position:fixed; left:0; right:0; top:calc(var(--topbar-h) + var(--subnav-h));
-    background:rgba(11,16,32,.98); border-bottom:1px solid #1f2a4d;
-    display:flex; flex-direction:column; align-items:flex-start;
-    gap:10px; padding:14px 16px; max-height:calc(100dvh - var(--header-total)); overflow:auto;
-    transform:translateY(-12px); opacity:0; pointer-events:none; transition:transform .18s ease, opacity .18s ease;
-  }
-  .subnav.open .navmenu{ transform:none; opacity:1; pointer-events:auto; }
 
-  /* Anim burger -> croix */
-  .subnav.open .nav-toggle .line:nth-child(1){ transform:translateY(4px) rotate(45deg); }
-  .subnav.open .nav-toggle .line:nth-child(2){ opacity:0; }
-  .subnav.open .nav-toggle .line:nth-child(3){ transform:translateY(-4px) rotate(-45deg); }
+/* Contenu : grille compacte multi‑lignes */
+.navmenu{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:8px; padding:14px 12px; }
+.navmenu a{ display:block; width:100%; padding:8px 10px; font-size:13px; line-height:1.2; border:1px solid #26335f; border-radius:10px; background:var(--soft); }
+.navmenu a:hover{ background:var(--accent); color:#0b1020; }
+
+
+/* Anim burger -> croix */
+.subnav.open .nav-toggle .line:nth-child(1){ transform:translateY(4px) rotate(45deg); }
+.subnav.open .nav-toggle .line:nth-child(2){ opacity:0; }
+.subnav.open .nav-toggle .line:nth-child(3){ transform:translateY(-4px) rotate(-45deg); }
 }
 
 /* Empêcher le scroll de fond quand le menu est ouvert */
-body.no-scroll{ overflow:hidden; }
+body.no-scroll{overflow:hidden}
 
-
-
-/* === Fix hamburger (MOBILE) : panneau au-dessus + liens en colonne === */
-@media (max-width: 900px){
-  /* Si des dégradés existaient, on les coupe en mobile */
-  .subnav::before,
-  .subnav::after{ display:none; }
-
-  /* Panneau coulissant : passe au-dessus de tout */
-  .navmenu{
-    z-index: 1100;
-  }
-
-  /* Chaque lien prend toute la largeur du panneau */
-  .navmenu a{
-    display:block;
-    width:100%;
-  }
+/* Bouton "Section suivante" */
+.next-wrap{display:flex;justify-content:flex-end;margin-top:20px}
+.next-wrap .btn.next{border-radius:999px;padding:10px 14px;border:1px solid #2a3a6b;background:#0e1736}
+@media (max-width:700px){.next-wrap{justify-content:center}}
+.next-wrap .btn.next::after{content:"→";transition:transform .15s ease;display:inline-block}
+.next-wrap .btn.next:hover::after{transform:translateX(2px)}
+@media (max-width:600px){.next-wrap{justify-content:center}.next-wrap .btn.next{width:100%;max-width:320px;justify-content:center}
 }
-/* Bouton "Section suivante" (cohérent sur toutes les pages) */
-.next-wrap{
-  display:flex;
-  justify-content:flex-end;   /* à droite sur desktop */
-  margin-top: 20px;
-}
-.next-wrap .btn.next{
-  border-radius: 999px;
-  padding: 10px 14px;
-  border:1px solid #2a3a6b;
-  background:#0e1736;
-}
-
-/* Centré en mobile */
-@media (max-width: 700px){
-  .next-wrap{ justify-content:center; }
+/* Desktop : le panneau ne doit rien gêner */
+@media (min-width:901px){
+.navmenu-panel{ position:static; max-height:none; overflow:visible; box-shadow:none; }
 }
 
 
-/* Petite flèche à droite du libellé */
-.next-wrap .btn.next::after{
-  content: "→";
-  transition: transform .15s ease;
-  display: inline-block;
-}
+/* Mobile : panneau fermé sans scroll interne, contenu en grille compacte */
+@media (max-width:900px){
+.navtoggle{ display:inline-flex; }
 
-.next-wrap .btn.next:hover::after{
-  transform: translateX(2px);
-}
 
-/* Mobile : on centre et on élargit un peu le bouton */
-@media (max-width: 600px){
-  .next-wrap{
-    justify-content: center;
-  }
-  .next-wrap .btn.next{
-    width: 100%;
-    max-width: 320px;
-    justify-content: center;
-  }
+.navmenu-panel{ position:absolute; left:0; right:0; top:100%;
+background:rgba(11,16,32,.98); border-bottom:1px solid #1f2a4d;
+overflow:hidden; max-height:0; transition:max-height .25s ease; z-index:1100;
+}
+.navmenu-panel.open{ max-height:9999px; }
+
+
+.navmenu{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:8px; padding:14px 12px; }
+.navmenu a{ display:block; width:100%; padding:8px 10px; font-size:13px; line-height:1.2; border:1px solid #26335f; border-radius:10px; background:var(--soft); }
 }

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sécurité : menaces & bonnes pratiques</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <a class="skip" href="#main">Aller au contenu</a>
 
@@ -19,21 +21,22 @@
     <!-- NAV HAMBURGER (même structure que les autres pages) -->
     <nav class="subnav" aria-label="Navigation">
       <div class="wrap navwrap">
-        <button class="nav-toggle" id="navToggle" aria-expanded="false"
-                aria-controls="navMenu" aria-label="Ouvrir le menu">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu"
+          aria-label="Ouvrir le menu">
           <span class="line"></span><span class="line"></span><span class="line"></span>
         </button>
 
-        <div class="navmenu" id="navMenu" role="menu">
-          <a href="index.html" role="menuitem">Accueil</a>
-          <a href="timeline.html" role="menuitem">Timeline</a>
-          <a href="url.html" role="menuitem">URL (visuel)</a>
-          <a href="domains.html" role="menuitem">Domaines &amp; DNS</a>
-          <a href="standards.html" role="menuitem">Standards</a>
-          <a href="security.html" role="menuitem" class="active">Sécurité</a>
-          <a href="sources.html" role="menuitem">Sources</a>
+        <div class="navmenu-panel" id="navMenu">
+          <div class="navmenu" role="menu">
+            <a href="index.html" role="menuitem">Accueil</a>
+            <a href="timeline.html" role="menuitem">Timeline</a>
+            <a href="url.html" role="menuitem">URL (visuel)</a>
+            <a href="domains.html" role="menuitem">Domaines &amp; DNS</a>
+            <a href="standards.html" role="menuitem">Standards</a>
+            <a href="security.html" role="menuitem" class="active">Sécurité</a>
+            <a href="sources.html" role="menuitem">Sources</a>
+          </div>
         </div>
-      </div>
     </nav>
   </header>
 
@@ -56,14 +59,15 @@
           <li><strong>Scraping / abus</strong> · collecte automatisée massive, dépassement de quotas</li>
         </ul>
         <img src="hacking.png" alt="Hacker cartoon"
-             style="max-width:220px; display:block; margin:18px auto; border-radius:12px; box-shadow:0 2px 12px #0002;"
-             loading="lazy" decoding="async" />
+          style="max-width:220px; display:block; margin:18px auto; border-radius:12px; box-shadow:0 2px 12px #0002;"
+          loading="lazy" decoding="async" />
       </div>
 
       <div class="card">
         <h3 class="mt-0">Générateur d’en-têtes (démo)</h3>
         <form id="headersForm" class="flow small">
-          <label><input type="checkbox" name="csp" checked> Content-Security-Policy (bloque les scripts non autorisés)</label>
+          <label><input type="checkbox" name="csp" checked> Content-Security-Policy (bloque les scripts non
+            autorisés)</label>
           <label><input type="checkbox" name="sri" checked> Subresource Integrity (SRI) pour CDN</label>
           <label><input type="checkbox" name="samesite" checked> Cookies SameSite=Lax</label>
           <label><input type="checkbox" name="hsts" checked> Strict-Transport-Security (HSTS)</label>
@@ -85,4 +89,5 @@
   <script src="js/common.js"></script>
   <script src="js/security.js"></script>
 </body>
+
 </html>

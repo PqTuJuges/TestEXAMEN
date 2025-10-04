@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Standards du Web</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <a class="skip" href="#main">Aller au contenu</a>
 
   <header class="header">
     <div class="topbar">
-      <div class="wrap title"><h1>Standards du Web</h1></div>
+      <div class="wrap title">
+        <h1>Standards du Web</h1>
+      </div>
     </div>
 
     <!-- NAV Hamburger -->
     <nav class="subnav" aria-label="Navigation">
-  <div class="wrap navwrap">
-    <button class="nav-toggle" id="navToggle" aria-expanded="false"
-            aria-controls="navMenu" aria-label="Ouvrir le menu">
-      <span class="line"></span><span class="line"></span><span class="line"></span>
-    </button>
+      <div class="wrap navwrap">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu"
+          aria-label="Ouvrir le menu">
+          <span class="line"></span><span class="line"></span><span class="line"></span>
+        </button>
 
-    <div class="navmenu" id="navMenu" role="menu">
-      <a href="index.html" role="menuitem">Accueil</a>
-      <a href="timeline.html" role="menuitem">Timeline</a>
-      <a href="url.html" role="menuitem">URL (visuel)</a>
-      <a href="domains.html" role="menuitem">Domaines &amp; DNS</a>
-      <a href="standards.html" role="menuitem" class="active">Standards</a>
-      <a href="security.html" role="menuitem">Sécurité</a>
-      <a href="sources.html" role="menuitem">Sources</a>
-    </div>
-  </div>
-</nav>
+        <div class="navmenu-panel" id="navMenu">
+          <div class="navmenu" role="menu">
+            <a href="index.html" role="menuitem">Accueil</a>
+            <a href="timeline.html" role="menuitem">Timeline</a>
+            <a href="url.html" role="menuitem">URL (visuel)</a>
+            <a href="domains.html" role="menuitem">Domaines &amp; DNS</a>
+            <a href="standards.html" role="menuitem" class="active">Standards</a>
+            <a href="security.html" role="menuitem">Sécurité</a>
+            <a href="sources.html" role="menuitem">Sources</a>
+          </div>
+        </div>
+      </div>
+    </nav>
 
   </header>
 
@@ -48,11 +54,19 @@
         <summary id="acc1" role="tab" aria-controls="p1">Organismes &amp; domaines</summary>
         <div id="p1" role="region" aria-labelledby="acc1">
           <ul>
-            <li><strong><span class="g" data-def="Consortium qui publie HTML, CSS, ARIA, WebAuthn…">W3C</span></strong> : HTML, CSS, ARIA, Web IDL, WebAuthn.</li>
-            <li><strong><span class="g" data-def="Groupe qui maintient l'HTML Living Standard et le DOM vivant.">WHATWG</span></strong> : HTML Living Standard, DOM vivant.</li>
-            <li><strong><span class="g" data-def="Organisme de standardisation des protocoles Internet (RFC).">IETF</span></strong> : HTTP/1.1-2-3, TLS, QUIC, DNS…</li>
-            <li><strong><span class="g" data-def="Comité qui fait évoluer JavaScript (ECMAScript).">ECMA TC39</span></strong> : JavaScript (ES).</li>
-            <li><strong><span class="g" data-def="Standard universel des caractères (textes, émojis).">Unicode</span></strong> : caractères &amp; émojis.</li>
+            <li><strong><span class="g" data-def="Consortium qui publie HTML, CSS, ARIA, WebAuthn…">W3C</span></strong>
+              : HTML, CSS, ARIA, Web IDL, WebAuthn.</li>
+            <li><strong><span class="g"
+                  data-def="Groupe qui maintient l'HTML Living Standard et le DOM vivant.">WHATWG</span></strong> : HTML
+              Living Standard, DOM vivant.</li>
+            <li><strong><span class="g"
+                  data-def="Organisme de standardisation des protocoles Internet (RFC).">IETF</span></strong> :
+              HTTP/1.1-2-3, TLS, QUIC, DNS…</li>
+            <li><strong><span class="g" data-def="Comité qui fait évoluer JavaScript (ECMAScript).">ECMA
+                  TC39</span></strong> : JavaScript (ES).</li>
+            <li><strong><span class="g"
+                  data-def="Standard universel des caractères (textes, émojis).">Unicode</span></strong> : caractères
+              &amp; émojis.</li>
           </ul>
         </div>
       </details>
@@ -101,4 +115,5 @@
   <script src="js/common.js"></script>
   <script src="js/standards.js"></script>
 </body>
+
 </html>

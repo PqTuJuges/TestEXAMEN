@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>URL : explication visuelle</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <a class="skip" href="#main">Aller au contenu</a>
 
   <header class="header">
     <div class="topbar">
-      <div class="wrap title"><h1>URL : explication visuelle</h1></div>
+      <div class="wrap title">
+        <h1>URL : explication visuelle</h1>
+      </div>
     </div>
 
     <!-- NAV Hamburger -->
     <nav class="subnav" aria-label="Navigation">
       <div class="wrap navwrap">
         <!-- Bouton hamburger -->
-        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Ouvrir le menu">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu"
+          aria-label="Ouvrir le menu">
           <span class="line"></span><span class="line"></span><span class="line"></span>
         </button>
 
         <!-- Menu -->
-        <div class="navmenu" id="navMenu" role="menu">
-          <a href="index.html" role="menuitem">Accueil</a>
-          <a href="timeline.html" role="menuitem">Timeline</a>
-          <a href="url.html" role="menuitem" class="active">URL (visuel)</a>
-          <a href="domains.html" role="menuitem">Domaines &amp; DNS</a>
-          <a href="standards.html" role="menuitem">Standards</a>
-          <a href="security.html" role="menuitem">Sécurité</a>
-          <a href="sources.html" role="menuitem">Sources</a>
+        <div class="navmenu-panel" id="navMenu">
+          <div class="navmenu" role="menu">
+            <a href="index.html" role="menuitem">Accueil</a>
+            <a href="timeline.html" role="menuitem">Timeline</a>
+            <a href="url.html" role="menuitem" class="active">URL (visuel)</a>
+            <a href="domains.html" role="menuitem">Domaines &amp; DNS</a>
+            <a href="standards.html" role="menuitem">Standards</a>
+            <a href="security.html" role="menuitem">Sécurité</a>
+            <a href="sources.html" role="menuitem">Sources</a>
+          </div>
         </div>
       </div>
     </nav>
@@ -45,7 +52,8 @@
 
     <div class="card url-lab">
       <div class="url-inputs">
-        <input id="urlInput" value="https://alice:secret@example.com:8080/produits/42?tri=prix&desc=true#avis" aria-label="Saisir une URL" />
+        <input id="urlInput" value="https://alice:secret@example.com:8080/produits/42?tri=prix&desc=true#avis"
+          aria-label="Saisir une URL" />
         <button class="btn" id="parseBtn">Analyser</button>
         <button class="btn ghost" id="copyUrl" data-copy="#urlInput">Copier</button>
       </div>
@@ -66,19 +74,43 @@
       </div>
 
       <div class="legend" id="legend">
-        <div class="item" data-key="scheme"><div class="dot"></div><div><strong>Schéma</strong> : protocole (<code>http</code>, <code>https</code>, <code>ftp</code>, <code>mailto</code>...).</div></div>
-        <div class="item" data-key="userinfo"><div class="dot"></div><div><strong>Infos utilisateur</strong> (optionnel) : <code>utilisateur:motdepasse@</code>.</div></div>
-        <div class="item" data-key="host"><div class="dot"></div><div><strong>Hôte</strong> : nom de domaine ou IP.</div></div>
-        <div class="item" data-key="port"><div class="dot"></div><div><strong>Port</strong> : ex. <code>80</code> HTTP, <code>443</code> HTTPS.</div></div>
-        <div class="item" data-key="path"><div class="dot"></div><div><strong>Chemin</strong> : chemin vers la ressource.</div></div>
-        <div class="item" data-key="query"><div class="dot"></div><div><strong>Paramètres</strong> : paires <code>clé=valeur</code>.</div></div>
-        <div class="item" data-key="fragment"><div class="dot"></div><div><strong>Fragment</strong> : ancre côté client.</div></div>
-        <p class="muted">Astuce : <kbd>Ctrl</kbd> + <kbd>C</kbd> pour copier la sélection, ou utilise le bouton « Copier ».</p>
+        <div class="item" data-key="scheme">
+          <div class="dot"></div>
+          <div><strong>Schéma</strong> : protocole (<code>http</code>, <code>https</code>, <code>ftp</code>,
+            <code>mailto</code>...).</div>
+        </div>
+        <div class="item" data-key="userinfo">
+          <div class="dot"></div>
+          <div><strong>Infos utilisateur</strong> (optionnel) : <code>utilisateur:motdepasse@</code>.</div>
+        </div>
+        <div class="item" data-key="host">
+          <div class="dot"></div>
+          <div><strong>Hôte</strong> : nom de domaine ou IP.</div>
+        </div>
+        <div class="item" data-key="port">
+          <div class="dot"></div>
+          <div><strong>Port</strong> : ex. <code>80</code> HTTP, <code>443</code> HTTPS.</div>
+        </div>
+        <div class="item" data-key="path">
+          <div class="dot"></div>
+          <div><strong>Chemin</strong> : chemin vers la ressource.</div>
+        </div>
+        <div class="item" data-key="query">
+          <div class="dot"></div>
+          <div><strong>Paramètres</strong> : paires <code>clé=valeur</code>.</div>
+        </div>
+        <div class="item" data-key="fragment">
+          <div class="dot"></div>
+          <div><strong>Fragment</strong> : ancre côté client.</div>
+        </div>
+        <p class="muted">Astuce : <kbd>Ctrl</kbd> + <kbd>C</kbd> pour copier la sélection, ou utilise le bouton « Copier
+          ».</p>
       </div>
 
       <details class="didyouknow">
         <summary>Le savais-tu ? URL vs URI</summary>
-        <p>Une <strong>URI</strong> identifie une ressource. Une <strong>URL</strong> est un type d’URI qui donne aussi le moyen d’y accéder (schéma, hôte…).</p>
+        <p>Une <strong>URI</strong> identifie une ressource. Une <strong>URL</strong> est un type d’URI qui donne aussi
+          le moyen d’y accéder (schéma, hôte…).</p>
       </details>
     </div>
 
@@ -94,7 +126,8 @@
         <div>
           <h4 class="mt-0">301 vs 302</h4>
           <p><strong>301 (permanente)</strong> : le navigateur et les robots mémorisent la nouvelle URL.<br>
-          <strong>302 (temporaire)</strong> : ne pas mémoriser, revenir à l’URL d’origine plus tard.</p>
+            <strong>302 (temporaire)</strong> : ne pas mémoriser, revenir à l’URL d’origine plus tard.
+          </p>
           <p class="small muted">SEO : privilégier <strong>301</strong> quand le déplacement est définitif.</p>
         </div>
         <div>
@@ -126,4 +159,5 @@ return 302 https://exemple.com/maintenance;</code></pre>
   <script src="js/common.js"></script>
   <script src="js/url.js"></script>
 </body>
+
 </html>
