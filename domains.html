@@ -41,18 +41,15 @@
   </header>
 
   <main id="main" class="wrap section">
-    <ul class="objectives">
-      <li>Expliquer “nom de domaine” vs “DNS”.</li>
-      <li>Suivre la résolution DNS jusqu’à l’IP.</li>
-    </ul>
-    <p class="lead">Tout ce qui se cache derrière <code>example.com</code> (ou <code>votresite.be</code>) expliqué
-      simplement.</p>
+    <h2 class="section-title">Nom de domaine & DNS : principes, acteurs, cycle de vie</h2>
+    <p class="lead">Tout ce qui se cache derrière <code>example.com</code> (ou <code>votresite.be</code>) expliqué simplement.</p>
+
 
     <!-- 1) Principe -->
     <article class="card flow">
       <div style="display:flex; align-items:flex-start; gap:32px;">
         <div style="flex:2;">
-          <h3 class="mt-0">1) Principe</h3>
+          <h3 class="mt-0"> Principe</h3>
           <p>Un <strong>nom de domaine</strong> est une étiquette mémorisable qui pointe vers des adresses IP. Au lieu
             de retenir <code>203.0.113.10</code>, on retient <code>exemple.com</code>. Un domaine peut héberger un site
             web (<code>www.exemple.com</code>), du mail (<code>MX</code>), des APIs, etc.</p>
@@ -74,7 +71,7 @@
 
     <!-- 2) Dépôt -->
     <article class="card flow">
-      <h3 class="mt-0">2) Dépôt / Réservation (en pratique)</h3>
+      <h3 class="mt-0"> Dépôt / Réservation (en pratique)</h3>
       <ol>
         <li><strong>Vérifier la disponibilité</strong> chez un registrar (ex. Gandi, OVHcloud, Namecheap…).</li>
         <li><strong>Enregistrer</strong> le domaine (1 à 10 ans) à votre nom (vous devenez le <em>registrant</em>).</li>
@@ -90,7 +87,7 @@
 
     <!-- 3) Acteurs -->
     <article class="card flow">
-      <h3 class="mt-0">3) Acteurs (qui fait quoi ?)</h3>
+      <h3 class="mt-0"> Acteurs (qui fait quoi ?)</h3>
       <div class="grid g-2">
         <div>
           <ul>
@@ -137,7 +134,7 @@
 
     <!-- 4) Cycle de vie -->
     <article class="card flow">
-      <h3 class="mt-0">4) Cycle de vie d’un domaine</h3>
+      <h3 class="mt-0"> Cycle de vie d’un domaine</h3>
       <ol>
         <li><strong>Disponible</strong> → vous pouvez l’enregistrer.</li>
         <li><strong>Enregistré</strong> → actif tant que vous renouvelez à l’échéance.</li>
@@ -152,7 +149,7 @@
 
     <!-- 5) DNS -->
     <article class="card flow">
-      <h3 class="mt-0">5) DNS : comment le navigateur trouve votre site ?</h3>
+      <h3 class="mt-0"> DNS : comment le navigateur trouve votre site ?</h3>
       <ol>
         <li>Le navigateur demande <code>www.votresite.be</code> au <strong>résolveur</strong> de l’utilisateur (FAI,
           1.1.1.1…).</li>

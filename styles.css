@@ -212,3 +212,8 @@ overflow:hidden; max-height:0; transition:max-height .25s ease; z-index:1100;
 .navmenu{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:8px; padding:14px 12px; }
 .navmenu a{ display:block; width:100%; padding:8px 10px; font-size:13px; line-height:1.2; border:1px solid #26335f; border-radius:10px; background:var(--soft); }
 }
+.section-title{
+  font-weight:700;
+  letter-spacing:.2px;
+  margin:0 0 16px;
+}

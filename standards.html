@@ -39,71 +39,60 @@
         </div>
       </div>
     </nav>
-
   </header>
 
   <main id="main" class="wrap section">
-    <ul class="objectives">
-      <li>Citer W3C, WHATWG, IETF, TC39, Unicode.</li>
-      <li>Relier un standard à un bénéfice utilisateur.</li>
-    </ul>
-    <p class="lead">Ouvre les volets pour voir qui fait quoi et pourquoi c’est crucial.</p>
+    <h2 class="section-title">Rôle des standards : qui fait quoi et pourquoi c’est crucial</h2>
+    <p class="lead">Tout est visible directement ci-dessous (plus besoin de cliquer).</p>
 
-    <div class="accordions" role="tablist">
-      <details class="acc" open>
-        <summary id="acc1" role="tab" aria-controls="p1">Organismes &amp; domaines</summary>
-        <div id="p1" role="region" aria-labelledby="acc1">
-          <ul>
-            <li><strong><span class="g" data-def="Consortium qui publie HTML, CSS, ARIA, WebAuthn…">W3C</span></strong>
-              : HTML, CSS, ARIA, Web IDL, WebAuthn.</li>
-            <li><strong><span class="g"
-                  data-def="Groupe qui maintient l'HTML Living Standard et le DOM vivant.">WHATWG</span></strong> : HTML
-              Living Standard, DOM vivant.</li>
-            <li><strong><span class="g"
-                  data-def="Organisme de standardisation des protocoles Internet (RFC).">IETF</span></strong> :
-              HTTP/1.1-2-3, TLS, QUIC, DNS…</li>
-            <li><strong><span class="g" data-def="Comité qui fait évoluer JavaScript (ECMAScript).">ECMA
-                  TC39</span></strong> : JavaScript (ES).</li>
-            <li><strong><span class="g"
-                  data-def="Standard universel des caractères (textes, émojis).">Unicode</span></strong> : caractères
-              &amp; émojis.</li>
-          </ul>
-        </div>
-      </details>
+    <!-- Organismes & domaines -->
+    <article class="card flow">
+      <h3 class="mt-0">Organismes &amp; domaines</h3>
+      <ul>
+        <li><strong><span class="g" data-def="Consortium qui publie HTML, CSS, ARIA, WebAuthn…">W3C</span></strong> :
+          HTML, CSS, ARIA, Web IDL, WebAuthn.</li>
+        <li><strong><span class="g" data-def="Groupe qui maintient l'HTML Living Standard et le DOM vivant.">WHATWG</span></strong> :
+          HTML Living Standard, DOM vivant.</li>
+        <li><strong><span class="g" data-def="Organisme de standardisation des protocoles Internet (RFC).">IETF</span></strong> :
+          HTTP/1.1-2-3, TLS, QUIC, DNS…</li>
+        <li><strong><span class="g" data-def="Comité qui fait évoluer JavaScript (ECMAScript).">ECMA TC39</span></strong> :
+          JavaScript (ECMAScript).</li>
+        <li><strong><span class="g" data-def="Standard universel des caractères (textes, émojis).">Unicode</span></strong> :
+          caractères &amp; émojis.</li>
+      </ul>
+    </article>
 
-      <details class="acc">
-        <summary id="acc2" role="tab" aria-controls="p2">Pourquoi c’est indispensable</summary>
-        <div id="p2" role="region" aria-labelledby="acc2">
-          <ul>
-            <li>Interopérabilité entre navigateurs.</li>
-            <li>Compatibilité dans le temps (ne rien casser).</li>
-            <li>Accessibilité (ARIA/WCAG).</li>
-            <li>Performance &amp; sécurité (HTTP/3, CSP, CORS…).</li>
-            <li>Processus : idée → normalisation → implémentations → tests.</li>
-          </ul>
-        </div>
-      </details>
+    <!-- Pourquoi c'est indispensable -->
+    <article class="card flow">
+      <h3 class="mt-0">Pourquoi c’est indispensable</h3>
+      <ul>
+        <li>Interopérabilité entre navigateurs.</li>
+        <li>Compatibilité dans le temps (ne rien casser).</li>
+        <li>Accessibilité (ARIA/WCAG).</li>
+        <li>Performance &amp; sécurité (HTTP/3, CSP, CORS…).</li>
+        <li>Processus : idée → normalisation → implémentations → tests.</li>
+      </ul>
+    </article>
 
-      <details class="acc">
-        <summary id="acc3" role="tab" aria-controls="p3">Exemples concrets</summary>
-        <div id="p3" role="region" aria-labelledby="acc3">
-          <ul>
-            <li><strong>Flexbox/Grid</strong> : mêmes mises en page partout.</li>
-            <li><strong>Fetch</strong> : API réseau unifiée.</li>
-            <li><strong>HTTP/3</strong> : meilleure latence.</li>
-            <li><strong>ES Modules</strong> : import/export standard.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
+    <!-- Exemples concrets -->
+    <article class="card flow">
+      <h3 class="mt-0">Exemples concrets</h3>
+      <ul>
+        <li><strong>Flexbox/Grid</strong> : mêmes mises en page partout.</li>
+        <li><strong>Fetch</strong> : API réseau unifiée.</li>
+        <li><strong>HTTP/3</strong> : meilleure latence.</li>
+        <li><strong>ES Modules</strong> : import/export standard.</li>
+      </ul>
+    </article>
 
+    <!-- Mini-quiz -->
     <details class="quiz" data-quiz="standards" style="margin-top:16px">
       <summary>Mini-quiz : qui publie HTTP/3 ?</summary>
       <form>
         <label><input type="radio" name="q2" value="W3C"> W3C</label>
         <label><input type="radio" name="q2" value="IETF"> IETF</label>
         <label><input type="radio" name="q2" value="WHATWG"> WHATWG</label>
-        <button class="btn">Vérifier</button>
+        <button class="btn" type="submit">Vérifier</button>
       </form>
       <p class="feedback" aria-live="polite"></p>
     </details>
@@ -115,5 +104,4 @@
   <script src="js/common.js"></script>
   <script src="js/standards.js"></script>
 </body>
-
 </html>
